@@ -10,7 +10,7 @@ namespace DEMOMVC.Controllers{
         [HttpPost]
                 public IActionResult Index (Person ps)
         {
-            string strResult = "Xin chao" + ps.PersonId + "_" + ps.FullName + "_" + ps.Address;
+            string strResult = "Xin chao" + ps.PersonId + "_" + ps.FullName + "_" + ps.Address; 
             ViewBag.inforPerson = strResult;
             return View();
         }
