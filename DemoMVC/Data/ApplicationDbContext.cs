@@ -9,7 +9,7 @@ namespace DemoMVC.Data
         { }
        
         public DbSet<Person> Person { get; set; }
-        public DbSet<DemoMVC.Models.Employeee> Employeee { get; set; } = default!;
+        public DbSet<Employee> Employee { get; set; }
 
     }
 }

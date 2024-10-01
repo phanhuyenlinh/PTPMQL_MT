@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241001044042_Create_Table_Employeee")]
-    partial class Create_Table_Employeee
+    [Migration("20241001073702_Create_table_Employee")]
+    partial class Create_table_Employee
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,7 @@ namespace DemoMVC.Migrations
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasMaxLength(13)
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("hoten")
@@ -46,11 +46,19 @@ namespace DemoMVC.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("DemoMVC.Models.Employeee", b =>
+            modelBuilder.Entity("DemoMVC.Models.Employee", b =>
                 {
                     b.HasBaseType("DemoMVC.Models.Person");
 
-                    b.HasDiscriminator().HasValue("Employeee");
+                    b.Property<string>("Mamon")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Monhoc")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasDiscriminator().HasValue("Employee");
                 });
 #pragma warning restore 612, 618
         }

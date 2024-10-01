@@ -10,22 +10,22 @@ using DemoMVC.Models;
 
 namespace DemoMVC.Controllers
 {
-    public class EmployeeeController : Controller
+    public class EmployeeController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EmployeeeController(ApplicationDbContext context)
+        public EmployeeController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Employeee
+        // GET: Employee
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employeee.ToListAsync());
+            return View(await _context.Employee.ToListAsync());
         }
 
-        // GET: Employeee/Details/5
+        // GET: Employee/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace DemoMVC.Controllers
                 return NotFound();
             }
 
-            var employeee = await _context.Employeee
+            var employee = await _context.Employee
                 .FirstOrDefaultAsync(m => m.cancuoccongdan == id);
-            if (employeee == null)
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            return View(employeee);
+            return View(employee);
         }
 
-        // GET: Employeee/Create
+        // GET: Employee/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Employeee/Create
+        // POST: Employee/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("cancuoccongdan,hoten,quequan")] Employeee employeee)
+        public async Task<IActionResult> Create([Bind("Mamon,Monhoc,cancuoccongdan,hoten,quequan")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employeee);
+                _context.Add(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(employeee);
+            return View(employee);
         }
 
-        // GET: Employeee/Edit/5
+        // GET: Employee/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace DemoMVC.Controllers
                 return NotFound();
             }
 
-            var employeee = await _context.Employeee.FindAsync(id);
-            if (employeee == null)
+            var employee = await _context.Employee.FindAsync(id);
+            if (employee == null)
             {
                 return NotFound();
             }
-            return View(employeee);
+            return View(employee);
         }
 
-        // POST: Employeee/Edit/5
+        // POST: Employee/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("cancuoccongdan,hoten,quequan")] Employeee employeee)
+        public async Task<IActionResult> Edit(string id, [Bind("Mamon,Monhoc,cancuoccongdan,hoten,quequan")] Employee employee)
         {
-            if (id != employeee.cancuoccongdan)
+            if (id != employee.cancuoccongdan)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace DemoMVC.Controllers
             {
                 try
                 {
-                    _context.Update(employeee);
+                    _context.Update(employee);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeeExists(employeee.cancuoccongdan))
+                    if (!EmployeeExists(employee.cancuoccongdan))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace DemoMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(employeee);
+            return View(employee);
         }
 
-        // GET: Employeee/Delete/5
+        // GET: Employee/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -124,34 +124,34 @@ namespace DemoMVC.Controllers
                 return NotFound();
             }
 
-            var employeee = await _context.Employeee
+            var employee = await _context.Employee
                 .FirstOrDefaultAsync(m => m.cancuoccongdan == id);
-            if (employeee == null)
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            return View(employeee);
+            return View(employee);
         }
 
-        // POST: Employeee/Delete/5
+        // POST: Employee/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var employeee = await _context.Employeee.FindAsync(id);
-            if (employeee != null)
+            var employee = await _context.Employee.FindAsync(id);
+            if (employee != null)
             {
-                _context.Employeee.Remove(employeee);
+                _context.Employee.Remove(employee);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeeExists(string id)
+        private bool EmployeeExists(string id)
         {
-            return _context.Employeee.Any(e => e.cancuoccongdan == id);
+            return _context.Employee.Any(e => e.cancuoccongdan == id);
         }
     }
 }

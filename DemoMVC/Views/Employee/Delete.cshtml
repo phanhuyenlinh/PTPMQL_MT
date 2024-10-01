@@ -1,4 +1,4 @@
-@model DemoMVC.Models.Employeee
+@model DemoMVC.Models.Employee
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,9 +8,21 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Employeee</h4>
+    <h4>Employee</h4>
     <hr />
     <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mamon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mamon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Monhoc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Monhoc)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.hoten)
         </dt>

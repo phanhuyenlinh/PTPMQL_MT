@@ -1,4 +1,4 @@
-@model IEnumerable<DemoMVC.Models.Employeee>
+@model IEnumerable<DemoMVC.Models.Employee>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,6 +13,12 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Mamon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monhoc)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.hoten)
             </th>
             <th>
@@ -24,6 +30,12 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mamon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monhoc)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.hoten)
             </td>
