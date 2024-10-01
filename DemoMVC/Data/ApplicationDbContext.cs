@@ -1,13 +1,15 @@
+using DemoMVC.Models;
 using Microsoft.EntityFrameworkCore;
-using DEMOMVC.Models;
-using MVC.Models;
-namespace DEMOMVC.Data
+
+namespace DemoMVC.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options):base(options)
-        {}
-        public DbSet<Employee> Employee { get; set; }
-        public DbSet<SinhVien> SinhVien { get; set; }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        { }
+       
+        public DbSet<Person> Person { get; set; }
+        public DbSet<DemoMVC.Models.Employeee> Employeee { get; set; } = default!;
+
     }
 }

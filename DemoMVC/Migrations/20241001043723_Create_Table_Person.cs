@@ -5,22 +5,23 @@
 namespace DemoMVC.Migrations
 {
     /// <inheritdoc />
-    public partial class Create_table_SinhVien : Migration
+    public partial class Create_Table_Person : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "SinhVien",
+                name: "Person",
                 columns: table => new
                 {
-                    SVID = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    DC = table.Column<string>(type: "TEXT", nullable: false)
+                    cancuoccongdan = table.Column<string>(type: "TEXT", nullable: false),
+                    hoten = table.Column<string>(type: "TEXT", nullable: false),
+                    quequan = table.Column<string>(type: "TEXT", nullable: false),
+                    Discriminator = table.Column<string>(type: "TEXT", maxLength: 13, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SinhVien", x => x.SVID);
+                    table.PrimaryKey("PK_Person", x => x.cancuoccongdan);
                 });
         }
 
@@ -28,7 +29,7 @@ namespace DemoMVC.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "SinhVien");
+                name: "Person");
         }
     }
 }

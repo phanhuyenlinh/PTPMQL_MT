@@ -1,9 +1,14 @@
-namespace DEMOMVC.Models
+using System.ComponentModel.DataAnnotations;
+
+namespace DemoMVC.Models
 {
     public class Person
     {
-        public string? PersonId { get; set; }
-        public string? FullName { get; set; }
-        public string? Address { get; set; }
+        [Key]
+        public string cancuoccongdan { get; set; }
+        public string hoten { get; set; }
+        public string quequan { get; set; }
+
     }
+
 }
